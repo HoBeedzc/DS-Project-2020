@@ -19,3 +19,10 @@ struct node
     int Exp;
     int Link;
 };
+
+typedef struct node LNode, *Polynomial;
+
+int main()
+{
+    return 0;
+}

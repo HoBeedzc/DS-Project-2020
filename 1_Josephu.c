@@ -27,7 +27,7 @@ struct node
 typedef struct node LNode, *CLinkList;
 
 int Creat_by_number(CLinkList *H, int n);
-int Josephu(CLinkList *H, int m, int k);
+int Josephu(CLinkList *H, int n, int m, int k);
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
     printf("Enter the value of k...\n");
     scanf("%d", &k);
     Creat_by_number(&H, n);
-    Josephu(&H, m, k);
+    Josephu(&H, n, m, k);
     return 0;
 }
 
@@ -61,17 +61,16 @@ int Creat_by_number(CLinkList *H, int n)
     return 0;
 }
 
-int Josephu(CLinkList *H, int m, int k)
+int Josephu(CLinkList *H,int n, int m, int k)
 {
     LNode *p = (*H), *q;
     printf("The order of poping is...\n");
-    for (int i = 1; i < k;i++) p = p->Link;//找到第一个要报数的人
+    for (int i = 1; i < n+k-1;i++) p = p->Link;//找到第一个要报数的人的前面的人
     while ((*H)->Link != *H) //一直循环到只剩一个节点
     {
-        for (int i = 1; i < m-1;i++) p = p->Link;//找到要报m的人（因为要把它删了，所以要在它报数之前停止）
+        for (int i = 1; i < m;i++) p = p->Link;//找到要报m的人（因为要把它删了，所以要在它报数之前停止）
         q = p->Link;
         p->Link = q->Link;
-        p = p->Link;
         if ((*H) == q) (*H) = (*H)->Link;//要是头节点被删除，将改变头节点
         printf("%5d", q->Data);
         if ((*H) != q) free(q);//如果在执行过77行后依然有*H == q，则代表表中只有一个元素了，此时就不要free了，不然会出现非法访问的错误
