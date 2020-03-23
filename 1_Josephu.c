@@ -11,12 +11,12 @@ Never Settle
 // 1.数据的储存方式选取单向循环链表
 // 2.循环链表不设头节点
 // 3.Josephu()函数可实现完整过程，main()函数仅起演示作用
+// 4.请确保您的输入使问题有意义。
 
 # include<stdio.h>
 # include<stdlib.h>
 
 # define SIZE sizeof(LNode)
-# define LEN 
 
 struct node 
 {
