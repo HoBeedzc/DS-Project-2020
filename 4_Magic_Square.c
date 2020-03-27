@@ -9,6 +9,7 @@ Never Settle
 
 // 本程序基于以下假设实现Magic Square问题
 // 1.请确保输入的数据合法
+// 2.本算法输入的n不要超过50
 
 # include<stdio.h>
 # include<stdlib.h>
@@ -28,6 +29,11 @@ int main()
     int B[MAX_SIZE] = {0};
     printf("Enter the order of the magic square...\n");
     scanf("%d", &n);
+    if (n*n>MAX_SIZE)//防止数组越界
+    {
+        printf("Overflow!\n");
+        return -1;
+    }
     printf("Meet Magic Now!\n");
     Magic_square_left(A, n);
     Show(A, n);
@@ -66,7 +72,7 @@ int Magic_square_left(MagicSquare A, int n)//向左上延申的方式
     return 0;
 }
 
-int Magic_square_right(MagicSquare A, int n)//向又上延伸的方式
+int Magic_square_right(MagicSquare A, int n)//向右上延伸的方式
 {
     int x = 0, y = n/2;
     int x_temp, y_temp;
