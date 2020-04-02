@@ -12,3 +12,11 @@ all the questions are as follow:
 ### 4.Magic_Square
 
 ### 5.Addition of Spase Matrix
+
+### 6.Hanoi
+
+### 6.1 Eight Queens
+
+### 6.2 Knight Tour
+
+### 7.Infix to Suffix
