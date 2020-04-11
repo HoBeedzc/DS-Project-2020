@@ -7,7 +7,7 @@ More info: https://github.com/HoBeedzc/ds_project
 Never Settle
 */
 
-// 本程序基于以下假设实现Josephu问题
+// 本程序基于以下假设实现Polynomial问题
 // 1.数据的储存方式选取普通链表
 // 2.链表设置头节点,头节点Data储存链表长度，Exp储存常量NULL
 // 3.输入时请按指数递增顺序输入
@@ -31,6 +31,7 @@ typedef struct node LNode, *Polynomial;
 int Creat_by_value(Polynomial A, int n);
 int Add(Polynomial *A, Polynomial *B);
 int Show(Polynomial A);
+int Insert(Polynomial A, int data, int exp);
 
 int main()
 {
@@ -54,21 +55,28 @@ int main()
     return 0;
 }
 
-int Creat_by_value(Polynomial A, int n)
+int Insert(Polynomial A, int data, int exp)
 {
     LNode *p = A;
+    LNode *new = (Polynomial)malloc(SIZE);
+    new->Data = data;
+    new->Exp = exp;
+    new->Link = 0;
+    while(p->Link != 0 && p->Link->Exp < exp) p = p->Link;
+    new->Link = p->Link;
+    p->Link = new;
+    A->Data += 1;
+    return 0;
+}
+
+int Creat_by_value(Polynomial A, int n)
+{
     int data,exp;
     printf("Enter the value and index of the Polynomial, splited by space...\n");
     for (int i = 0; i < n;i++)
     {
         scanf("%d %d", &data, &exp);
-        LNode *new = (Polynomial)malloc(SIZE);
-        new->Data = data;
-        new->Exp = exp;
-        new->Link = 0;
-        p->Link = new;
-        p = p->Link;
-        A->Data += 1;
+        Insert(A, data, exp);
     }
     return 0;
 }
@@ -152,9 +160,21 @@ int Show(Polynomial A)
     A = A->Link;
     for (int i = 0; i < n;i++)
     {
-        printf("%dx1^%d+", A->Data, A->Exp);
-        A = A->Link;
+        if(A->Data > 0)//保证符号正确
+        {
+            printf("%dx^%d+", A->Data, A->Exp);
+            A = A->Link;
+        }
+        else if (A->Data < 0)
+        {
+            printf("\b%dx^%d+", A->Data, A->Exp);
+            A = A->Link;
+        }
+        else//0直接跳过不输出
+        {
+            A = A->Link;
+        }
     }
-    printf("\b \n");
+    printf("\b \n");//去掉末尾多余的加号
     return 0;
 }
