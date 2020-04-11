@@ -1,9 +1,11 @@
 # ds_project
-the solution of the final work of data struct (BUAA SEM 2020)
+the solution of the final work of Data Struct (BUAA SEM 2020)
 
-all the questions are as follow:
+All the questions are as follow:
 
 ### 1.Josephu
+
+Programming to solve Josephu's problem.
 
 ### 2.Polynomial
 
