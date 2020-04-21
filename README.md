@@ -11,7 +11,7 @@ Programming to solve Josephu's problem.
 
 ### 3.Transpose of Sparse Matrix
 
-### 4.Magic_Square
+### 4.Magic Square
 
 ### 5.Addition of Spase Matrix
 
@@ -22,3 +22,9 @@ Programming to solve Josephu's problem.
 ### 6.2 Knight Tour
 
 ### 7.Infix to Suffix
+
+### 8.Binary Sort Tree
+
+### 9.Quick Sort with Ascending Order
+
+### 10.Shell's Sort with Descending Qrder
