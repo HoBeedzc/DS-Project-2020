@@ -17,30 +17,55 @@ Never Settle
 
 int Show(int *A);
 int Shell_with_bubble(int *A);
+int Shell_with_insertion(int *A);
 
 int main()
-{int A[9999] = {0};
+{
+    int A[9999] = {0}, B[9999] = {0};
     printf("Enter the length of list...\n");
     scanf("%d",&A[0]);
     printf("Enter the value of every node, splited by space...\n");
     for (int i = 1; i <= A[0];i++) scanf("%d", &A[i]);
-    Shell_with_bubble(A);
+    for (int i = 0; i <= A[0];i++) B[i] = A[i];
+    printf("Using shell with insertion...\n");
+    Shell_with_insertion(A);
     Show(A);
+    printf("\n");
+    printf("Using shell with bubble...\n");
+    Shell_with_bubble(B);
+    Show(B);
+    printf("\n");
     return 0;
 }
 
 int Shell_with_insertion(int *A) //内嵌插排的希尔排序
 {
+    int n = A[0], d = n, temp, j;
+    while(d!=1)
+    {
+        d = d / 2;
+        for (int i = d + 1; i <= n; i++)
+        {
+            temp = A[i];
+            j = i;
+            while(j-d>0 && A[j-d]<temp)
+            {
+                A[j] = A[j - d];
+                j -= d;
+            }
+            A[j] = temp;
+        }
+    }
     return 0;
 } 
 
 int Shell_with_bubble(int *A) //内嵌冒泡的希尔排序
 {
     int n = A[0], d = n, flag = 1, temp;
-    while(d!=1)
+    while(flag || d != 1)
     {
-        d = d / 2;
-        flag = 1;
+        d = d > 1 ? d / 2 : 1;
+        flag = 0;
         for (int i = 1; i <= n - d;i++)
         {
             if (A[i]<A[i + d])
@@ -48,10 +73,9 @@ int Shell_with_bubble(int *A) //内嵌冒泡的希尔排序
                 temp = A[i];
                 A[i] = A[i + d];
                 A[i + d] = temp;
-                flag = 0;
+                flag = 1;
             }
         }
-        if (flag) break;
     }
     return 0;
 }
