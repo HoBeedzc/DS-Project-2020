@@ -1,6 +1,12 @@
 # ds_project
 the solution of the final work of Data Struct (BUAA SEM 2020)
 
+## Attention
+
+Since the course has been completed, this repository will no longer be maintained.
+
+## Solutions
+
 All the questions are as follow:
 
 ### 1.Josephu
